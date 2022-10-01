@@ -14,11 +14,12 @@ public class PlayerVampireState : PlayerBaseState
     public override void Attack()
     {
         Debug.Log("Vampire says blah blah blah");
+        _stateMachine.Anim.SetTrigger("VampireAttack");
     }
 
     public override void Enter()
     {
-        Debug.Log("Vampire Enter");
+        //Debug.Log("Vampire Enter");
         _stateMachine.InputReader.OnAttackEvent += Attack;
     }
 

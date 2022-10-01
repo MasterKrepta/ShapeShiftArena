@@ -13,7 +13,7 @@ public class PlayerWizardState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("Wizard Enter");
+        //Debug.Log("Wizard Enter");
         _stateMachine.InputReader.OnAttackEvent += Attack;
     }
 
@@ -50,5 +50,6 @@ public class PlayerWizardState : PlayerBaseState
     public override void Attack()
     {
         Debug.Log("wizard casts a spell");
+        _stateMachine.Anim.SetTrigger("WizardAttack");
     }
 }

@@ -18,7 +18,7 @@ public class PlayerWerewolfState : PlayerBaseState
 
     public override void Enter()
     {
-        Debug.Log("werewolf enter");
+        //Debug.Log("werewolf enter");
         _stateMachine.InputReader.OnJumpEvent += OnJump;
         _stateMachine.InputReader.OnAttackEvent += Attack;
 
@@ -76,8 +76,10 @@ public class PlayerWerewolfState : PlayerBaseState
 
     public override void Attack()
     {
+        //TODO pounce attack
+        _stateMachine.Anim.SetTrigger("WerewolfAttack");
         Debug.Log("Werewolf goes appshit");
-        _stateMachine.testTarget.TakeDamage(5);
+
 
     }
 }

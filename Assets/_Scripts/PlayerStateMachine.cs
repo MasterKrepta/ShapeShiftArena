@@ -10,6 +10,7 @@ public class PlayerStateMachine : StateMachine
     public InputReader InputReader;
     public Transform MainCameraTransform;
 
+    public Animator Anim;
     public PlayerBaseState currentState;
     public float WerewolfMoveSpeed = 6;
     public float VampireMoveSpeed = 3;
@@ -22,7 +23,7 @@ public class PlayerStateMachine : StateMachine
     {
         cc = GetComponent<CharacterController>();
         InputReader = GetComponent<InputReader>();
-
+        Anim = GetComponent<Animator>();
         currentState = new PlayerWerewolfState(this);
         SwitchState(currentState);
     }

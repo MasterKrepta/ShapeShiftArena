@@ -10,6 +10,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Vector2 MovementValue { get; private set; }
     public event Action OnJumpEvent;
     public event Action OnAttackEvent;
+    public event Action OnTestEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +40,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         if (!context.performed) { return; }
         OnAttackEvent?.Invoke();
+    }
+
+    public void OnTest(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+        OnTestEvent?.Invoke();
     }
 }
