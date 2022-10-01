@@ -9,6 +9,8 @@ public class PlayerStateMachine : StateMachine
     public CharacterController cc;
     public InputReader InputReader;
     public Transform MainCameraTransform;
+
+    public PlayerBaseState currentState;
     public float WerewolfMoveSpeed = 5;
     // Start is called before the first frame update
     void Start()
@@ -16,7 +18,8 @@ public class PlayerStateMachine : StateMachine
         cc = GetComponent<CharacterController>();
         InputReader = GetComponent<InputReader>();
 
-        SwitchState(new PlayerWerewolfState(this));
+        currentState = new PlayerWerewolfState(this);
+        SwitchState(currentState);
     }
 
 

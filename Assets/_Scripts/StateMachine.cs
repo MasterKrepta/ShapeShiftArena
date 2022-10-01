@@ -17,4 +17,6 @@ public class StateMachine : MonoBehaviour
         _currentState = newState;
         _currentState?.Enter();
     }
+
+
 }

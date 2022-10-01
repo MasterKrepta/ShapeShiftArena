@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
 {
     private Controls _controls;
     public Vector2 MovementValue { get; private set; }
+    public event Action OnJumpEvent;
+    public event Action OnAttackEvent;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +28,11 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnMovement(InputAction.CallbackContext context)
     {
         MovementValue = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (!context.performed) { return; }
+        OnJumpEvent?.Invoke();
     }
 }
