@@ -11,8 +11,11 @@ public class PlayerStateMachine : StateMachine
     public Transform MainCameraTransform;
 
     public PlayerBaseState currentState;
-    public float WerewolfMoveSpeed = 5;
+    public float WerewolfMoveSpeed = 6;
+    public float VampireMoveSpeed = 3;
+    public float WizardMoveSpeed = 1.5f;
     public float RotationDamping = 30;
+    public EnemyHealth testTarget;
 
     // Start is called before the first frame update
     void Start()

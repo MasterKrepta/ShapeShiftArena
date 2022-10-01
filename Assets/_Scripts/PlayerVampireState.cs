@@ -11,14 +11,20 @@ public class PlayerVampireState : PlayerBaseState
         this.playerStateMachine = playerStateMachine;
     }
 
+    public override void Attack()
+    {
+        Debug.Log("Vampire says blah blah blah");
+    }
+
     public override void Enter()
     {
         Debug.Log("Vampire Enter");
+        _stateMachine.InputReader.OnAttackEvent += Attack;
     }
 
     public override void Exit()
     {
-
+        _stateMachine.InputReader.OnAttackEvent -= Attack;
     }
 
     public override void Tick(float deltaTime)
@@ -41,7 +47,7 @@ public class PlayerVampireState : PlayerBaseState
 
 
 
-        Move(movement * _stateMachine.WerewolfMoveSpeed, deltaTime);
+        Move(movement * _stateMachine.VampireMoveSpeed, deltaTime);
         _stateMachine.cc.Move(velocity * Time.deltaTime);
 
 

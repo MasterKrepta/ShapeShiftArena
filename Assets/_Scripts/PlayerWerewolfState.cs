@@ -20,6 +20,8 @@ public class PlayerWerewolfState : PlayerBaseState
     {
         Debug.Log("werewolf enter");
         _stateMachine.InputReader.OnJumpEvent += OnJump;
+        _stateMachine.InputReader.OnAttackEvent += Attack;
+
     }
 
     private void OnJump()
@@ -55,7 +57,8 @@ public class PlayerWerewolfState : PlayerBaseState
 
     public override void Exit()
     {
-
+        _stateMachine.InputReader.OnJumpEvent -= OnJump;
+        _stateMachine.InputReader.OnAttackEvent -= Attack;
     }
 
     public void Jump(float Force)
@@ -71,5 +74,10 @@ public class PlayerWerewolfState : PlayerBaseState
 
     }
 
+    public override void Attack()
+    {
+        Debug.Log("Werewolf goes appshit");
+        _stateMachine.testTarget.TakeDamage(5);
 
+    }
 }

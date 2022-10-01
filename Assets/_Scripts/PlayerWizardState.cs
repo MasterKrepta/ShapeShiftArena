@@ -14,6 +14,7 @@ public class PlayerWizardState : PlayerBaseState
     public override void Enter()
     {
         Debug.Log("Wizard Enter");
+        _stateMachine.InputReader.OnAttackEvent += Attack;
     }
 
 
@@ -35,7 +36,7 @@ public class PlayerWizardState : PlayerBaseState
             velocity.y += Physics.gravity.y * 2 * Time.deltaTime;
         }
 
-        Move(movement * _stateMachine.WerewolfMoveSpeed, deltaTime);
+        Move(movement * _stateMachine.WizardMoveSpeed, deltaTime);
         _stateMachine.cc.Move(velocity * Time.deltaTime);
 
 
@@ -43,6 +44,11 @@ public class PlayerWizardState : PlayerBaseState
     }
     public override void Exit()
     {
+        _stateMachine.InputReader.OnAttackEvent -= Attack;
+    }
 
+    public override void Attack()
+    {
+        Debug.Log("wizard casts a spell");
     }
 }

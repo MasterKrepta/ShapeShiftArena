@@ -25,6 +25,8 @@ public abstract class PlayerBaseState : BaseState
     }
     public void FaceMovementDirection(Vector3 movement, float deltaTime)
     {
+        if (movement == Vector3.zero) return;
+
         _stateMachine.transform.rotation = Quaternion.Lerp(_stateMachine.transform.rotation,
                                                             Quaternion.LookRotation(movement),
                                                             deltaTime * _stateMachine.RotationDamping);
