@@ -20,6 +20,7 @@ public class PlayerVampireState : PlayerBaseState
     public override void Enter()
     {
         //Debug.Log("Vampire Enter");
+        _stateMachine.renderer.material = _stateMachine.vampire;
         _stateMachine.InputReader.OnAttackEvent += Attack;
     }
 

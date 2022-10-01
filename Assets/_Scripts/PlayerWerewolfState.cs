@@ -19,6 +19,7 @@ public class PlayerWerewolfState : PlayerBaseState
     public override void Enter()
     {
         //Debug.Log("werewolf enter");
+        _stateMachine.renderer.material = _stateMachine.werewolf;
         _stateMachine.InputReader.OnJumpEvent += OnJump;
         _stateMachine.InputReader.OnAttackEvent += Attack;
 

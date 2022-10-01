@@ -6,10 +6,11 @@ using UnityEngine;
 public class PlayerStateMachine : StateMachine
 
 {
+    public Material werewolf, vampire, wizard;
     public CharacterController cc;
     public InputReader InputReader;
     public Transform MainCameraTransform;
-
+    public Renderer renderer;
     public Animator Anim;
     public PlayerBaseState currentState;
     public float WerewolfMoveSpeed = 6;
@@ -24,6 +25,7 @@ public class PlayerStateMachine : StateMachine
         cc = GetComponent<CharacterController>();
         InputReader = GetComponent<InputReader>();
         Anim = GetComponent<Animator>();
+        renderer = GetComponentInChildren<Renderer>();
         currentState = new PlayerWerewolfState(this);
         SwitchState(currentState);
     }

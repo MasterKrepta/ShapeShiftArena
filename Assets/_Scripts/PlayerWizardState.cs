@@ -14,6 +14,7 @@ public class PlayerWizardState : PlayerBaseState
     public override void Enter()
     {
         //Debug.Log("Wizard Enter");
+        _stateMachine.renderer.material = _stateMachine.wizard;
         _stateMachine.InputReader.OnAttackEvent += Attack;
     }
 

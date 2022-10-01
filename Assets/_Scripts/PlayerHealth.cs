@@ -50,6 +50,7 @@ public class PlayerHealth : MonoBehaviour, IHealth
 
     public void Heal(float amt)
     {
+        Debug.Log("Heal 10 points");
         CurrentHealth += amt;
 
     }

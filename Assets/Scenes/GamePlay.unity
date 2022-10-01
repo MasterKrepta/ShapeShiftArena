@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 199969546}
   - component: {fileID: 199969545}
   - component: {fileID: 199969544}
-  - component: {fileID: 199969543}
+  - component: {fileID: 199969547}
   m_Layer: 0
   m_Name: WizardAttack
   m_TagString: Untagged
@@ -158,18 +158,6 @@ Transform:
   m_Father: {fileID: 291798075}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &199969543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199969541}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c440aeb64973a44a978ea46f383da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &199969544
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,6 +221,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199969541}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &199969547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199969541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6d8a0a94dbfb14894026d6ff43f493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &291798074
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd9a538b15f01644d9617257d19b1958, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  werewolf: {fileID: 2100000, guid: 547c090a8a15a5342865f8820f271064, type: 2}
+  vampire: {fileID: 2100000, guid: d0d887abc253161469a4e45b249708a8, type: 2}
+  wizard: {fileID: 2100000, guid: a7c2b334d170bee428ad466961ce8351, type: 2}
   cc: {fileID: 291798076}
   InputReader: {fileID: 291798077}
   MainCameraTransform: {fileID: 963194228}
@@ -472,7 +475,7 @@ GameObject:
   - component: {fileID: 601063450}
   - component: {fileID: 601063449}
   - component: {fileID: 601063448}
-  - component: {fileID: 601063447}
+  - component: {fileID: 601063451}
   m_Layer: 0
   m_Name: VampireAttack
   m_TagString: Untagged
@@ -495,18 +498,6 @@ Transform:
   m_Father: {fileID: 291798075}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &601063447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601063445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c440aeb64973a44a978ea46f383da4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!135 &601063448
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -570,6 +561,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601063445}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &601063451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601063445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd045efee0637d4f85e2029c6e5b0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &615095623
 GameObject:
   m_ObjectHideFlags: 0
