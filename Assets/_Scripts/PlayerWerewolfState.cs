@@ -7,9 +7,9 @@ public class PlayerWerewolfState : PlayerBaseState
 {
     private PlayerStateMachine playerStateMachine;
     public float jumpForce = 10;
-    private float verticalVelocity;
+
     Vector3 velocity;
-    bool canJump = true;
+
 
     public PlayerWerewolfState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -34,11 +34,9 @@ public class PlayerWerewolfState : PlayerBaseState
 
         if (_stateMachine.cc.isGrounded)
         {
-            //Todo fix this its inconsistant
-            //velocity.y = -1;
+            //Todo fix this its inconsistant, probobly on the unity level
             //To stop random falling from small inclines do this instead of setting to zero
             velocity.y = Physics.gravity.y * Time.deltaTime;
-            //velocity.y = Physics.gravity.y * _stateMachine.cc.stepOffset * Time.deltaTime;
         }
         else
         {
@@ -51,7 +49,7 @@ public class PlayerWerewolfState : PlayerBaseState
         _stateMachine.cc.Move(velocity * Time.deltaTime);
 
 
-
+        FaceMovementDirection(movement, deltaTime);
 
     }
 
@@ -60,26 +58,8 @@ public class PlayerWerewolfState : PlayerBaseState
 
     }
 
-    private Vector3 CalculateMovement()
-    {
-        Vector3 fwd = _stateMachine.MainCameraTransform.forward;
-        Vector3 right = _stateMachine.MainCameraTransform.right;
-
-        fwd.y = 0f;
-        right.y = 0f;
-
-        fwd.Normalize();
-        right.Normalize();
-
-        return fwd * _stateMachine.InputReader.MovementValue.y +
-                right * _stateMachine.InputReader.MovementValue.x;
-
-    }
-
     public void Jump(float Force)
     {
-
-
 
         // if (_stateMachine.cc.isGrounded)
         // {

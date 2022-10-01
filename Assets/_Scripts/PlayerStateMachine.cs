@@ -12,6 +12,8 @@ public class PlayerStateMachine : StateMachine
 
     public PlayerBaseState currentState;
     public float WerewolfMoveSpeed = 5;
+    public float RotationDamping = 30;
+
     // Start is called before the first frame update
     void Start()
     {

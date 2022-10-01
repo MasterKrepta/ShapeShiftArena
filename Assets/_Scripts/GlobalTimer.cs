@@ -15,7 +15,7 @@ public class GlobalTimer : MonoBehaviour
 
         Instance = this;
     }
-    float MaxTime = 3;
+    [SerializeField] float MaxTime = 10;
 
     [SerializeField] PlayerStateMachine _stateMachine;
 

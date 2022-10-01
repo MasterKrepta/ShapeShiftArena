@@ -23,6 +23,25 @@ public abstract class PlayerBaseState : BaseState
     {
         Move(Vector3.zero, deltaTime);
     }
+    public void FaceMovementDirection(Vector3 movement, float deltaTime)
+    {
+        _stateMachine.transform.rotation = Quaternion.Lerp(_stateMachine.transform.rotation,
+                                                            Quaternion.LookRotation(movement),
+                                                            deltaTime * _stateMachine.RotationDamping);
+    }
+    public Vector3 CalculateMovement()
+    {
+        Vector3 fwd = _stateMachine.MainCameraTransform.forward;
+        Vector3 right = _stateMachine.MainCameraTransform.right;
 
+        fwd.y = 0f;
+        right.y = 0f;
 
+        fwd.Normalize();
+        right.Normalize();
+
+        return fwd * _stateMachine.InputReader.MovementValue.y +
+                right * _stateMachine.InputReader.MovementValue.x;
+
+    }
 }
