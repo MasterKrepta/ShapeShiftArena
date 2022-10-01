@@ -46,6 +46,7 @@ public class PlayerWerewolfState : PlayerBaseState
             velocity.y += Physics.gravity.y * 2 * Time.deltaTime;
         }
 
+        HandleAnims(movement);
 
 
         Move(movement * _stateMachine.WerewolfMoveSpeed, deltaTime);
@@ -55,11 +56,20 @@ public class PlayerWerewolfState : PlayerBaseState
         FaceMovementDirection(movement, deltaTime);
 
     }
+    private void HandleAnims(Vector3 movement)
+    {
+        if (movement != Vector3.zero)
+            _stateMachine.Anim.SetBool("crawl", true);
+        else
+            _stateMachine.Anim.SetBool("crawl", false);
 
+
+    }
     public override void Exit()
     {
         _stateMachine.InputReader.OnJumpEvent -= OnJump;
         _stateMachine.InputReader.OnAttackEvent -= Attack;
+        _stateMachine.Anim.SetBool("crawl", false);
     }
 
     public void Jump(float Force)
@@ -79,8 +89,9 @@ public class PlayerWerewolfState : PlayerBaseState
     {
         //TODO pounce attack
         _stateMachine.Anim.SetTrigger("WerewolfAttack");
-        Debug.Log("Werewolf goes appshit");
+        //Debug.Log("Werewolf goes appshit");
 
 
     }
+
 }

@@ -36,6 +36,7 @@ public class PlayerWizardState : PlayerBaseState
         {
             velocity.y += Physics.gravity.y * 2 * Time.deltaTime;
         }
+        HandleAnims(movement);
 
         Move(movement * _stateMachine.WizardMoveSpeed, deltaTime);
         _stateMachine.cc.Move(velocity * Time.deltaTime);
@@ -43,14 +44,24 @@ public class PlayerWizardState : PlayerBaseState
 
         FaceMovementDirection(movement, deltaTime);
     }
+    private void HandleAnims(Vector3 movement)
+    {
+        if (movement != Vector3.zero)
+            _stateMachine.Anim.SetBool("moving", true);
+        else
+            _stateMachine.Anim.SetBool("moving", false);
+    }
+
+
     public override void Exit()
     {
         _stateMachine.InputReader.OnAttackEvent -= Attack;
+        _stateMachine.Anim.SetBool("moving", false);
     }
 
     public override void Attack()
     {
-        Debug.Log("wizard casts a spell");
+        //Debug.Log("wizard casts a spell");
         _stateMachine.Anim.SetTrigger("WizardAttack");
     }
 }

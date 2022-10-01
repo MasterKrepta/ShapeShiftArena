@@ -9,5 +9,6 @@ public class WizardAttack : MonoBehaviour
     private void OnEnable()
     {
         Debug.Log("cast spell");
+        Instantiate(spell, transform.position, Quaternion.identity);
     }
 }

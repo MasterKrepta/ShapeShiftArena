@@ -24,12 +24,17 @@ public class PlayerStateMachine : StateMachine
     {
         cc = GetComponent<CharacterController>();
         InputReader = GetComponent<InputReader>();
-        Anim = GetComponent<Animator>();
+        Anim = GetComponentInChildren<Animator>();
         renderer = GetComponentInChildren<Renderer>();
         currentState = new PlayerWerewolfState(this);
         SwitchState(currentState);
     }
-
+    void OnAnimatorMove()
+    {
+        Debug.Log("onMove");
+        transform.parent.rotation = Anim.rootRotation;
+        transform.parent.position += Anim.deltaPosition;
+    }
 
 
 

@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CombatAnims : MonoBehaviour
 {
+    Animator animator;
+    [SerializeField] GameObject parent;
+
+    private void Start()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
     [SerializeField] GameObject werewolfAttack, VampireAttack, WizardAttack;
     public void EnableWereWolfAttack()
     {
@@ -33,5 +40,10 @@ public class CombatAnims : MonoBehaviour
     public void DisableWizardAttack()
     {
         WizardAttack.SetActive(false);
+    }
+    public void ApplyRootMotion()
+    {
+        Debug.Log("land");
+        //parent.transform.position += animator.deltaPosition;
     }
 }

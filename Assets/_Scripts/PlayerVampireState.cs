@@ -13,7 +13,7 @@ public class PlayerVampireState : PlayerBaseState
 
     public override void Attack()
     {
-        Debug.Log("Vampire says blah blah blah");
+        //Debug.Log("Vampire says blah blah blah");
         _stateMachine.Anim.SetTrigger("VampireAttack");
     }
 
@@ -23,10 +23,17 @@ public class PlayerVampireState : PlayerBaseState
         _stateMachine.renderer.material = _stateMachine.vampire;
         _stateMachine.InputReader.OnAttackEvent += Attack;
     }
-
+    private void HandleAnims(Vector3 movement)
+    {
+        if (movement != Vector3.zero)
+            _stateMachine.Anim.SetBool("moving", true);
+        else
+            _stateMachine.Anim.SetBool("moving", false);
+    }
     public override void Exit()
     {
         _stateMachine.InputReader.OnAttackEvent -= Attack;
+        _stateMachine.Anim.SetBool("moving", false);
     }
 
     public override void Tick(float deltaTime)
@@ -46,7 +53,7 @@ public class PlayerVampireState : PlayerBaseState
         {
             velocity.y += Physics.gravity.y * 2 * Time.deltaTime;
         }
-
+        HandleAnims(movement);
 
 
         Move(movement * _stateMachine.VampireMoveSpeed, deltaTime);
