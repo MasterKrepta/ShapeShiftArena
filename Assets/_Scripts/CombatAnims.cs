@@ -11,7 +11,7 @@ public class CombatAnims : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
-    [SerializeField] GameObject werewolfAttack, VampireAttack, WizardAttack;
+    [SerializeField] GameObject werewolfAttack, VampireAttack, WizardAttack, enemyattack, enemyThrow;
     public void EnableWereWolfAttack()
     {
         werewolfAttack.SetActive(true);
@@ -45,5 +45,25 @@ public class CombatAnims : MonoBehaviour
     {
         Debug.Log("land");
         parent.transform.position += animator.deltaPosition;
+    }
+
+    public void EnableEnemyAttack()
+    {
+        enemyattack.SetActive(true);
+    }
+
+    public void DisableEnemyAttack()
+    {
+        enemyattack.SetActive(false);
+    }
+
+    public void EnableEnemyThrow()
+    {
+        enemyThrow.SetActive(true);
+    }
+
+    public void DisableEnemyThrow()
+    {
+        enemyThrow.SetActive(false);
     }
 }

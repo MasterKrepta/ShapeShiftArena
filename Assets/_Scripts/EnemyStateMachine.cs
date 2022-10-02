@@ -7,15 +7,16 @@ public class EnemyStateMachine : StateMachine
 {
 
     public Animator Anim;
-    public CharacterController cc;
+    public bool IsRanged = false;
+
     public NavMeshAgent Agent;
-    public PlayerHealth PlayerHealth;
+    public Transform Player;
     public float RotationDamping = 30;
     private void Start()
     {
-        PlayerHealth = FindObjectOfType<PlayerHealth>();
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
         Agent = GetComponent<NavMeshAgent>();
-        cc = GetComponent<CharacterController>();
+
         Anim = GetComponentInChildren<Animator>();
         SwitchState(new EnemySearchState(this));
     }

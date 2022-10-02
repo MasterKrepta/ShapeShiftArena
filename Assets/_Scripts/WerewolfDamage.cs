@@ -17,9 +17,7 @@ public class WerewolfDamage : MonoBehaviour
 
         }
     }
-    private void Update()
-    {
-    }
+
 
     void GetClosestTarget()
     {
