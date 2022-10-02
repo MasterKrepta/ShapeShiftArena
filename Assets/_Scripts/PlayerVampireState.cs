@@ -13,6 +13,12 @@ public class PlayerVampireState : PlayerBaseState
 
     public override void Attack()
     {
+        GetClosestTarget();
+
+
+        Vector3 lookDir = (closestEnemy.transform.position - _stateMachine.cc.transform.position).normalized;
+
+        _stateMachine.cc.transform.LookAt(closestEnemy.transform.position); //todo  this is a bug fix
         //Debug.Log("Vampire says blah blah blah");
         _stateMachine.Anim.SetTrigger("VampireAttack");
     }
