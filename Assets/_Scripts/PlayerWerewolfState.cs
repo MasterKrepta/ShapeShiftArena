@@ -10,6 +10,8 @@ public class PlayerWerewolfState : PlayerBaseState
 
     Vector3 velocity;
 
+    EnemyHealth closestEnemy;
+    float closestDist = float.PositiveInfinity;
 
     public PlayerWerewolfState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -22,6 +24,7 @@ public class PlayerWerewolfState : PlayerBaseState
         _stateMachine.renderer.material = _stateMachine.werewolf;
         _stateMachine.InputReader.OnJumpEvent += OnJump;
         _stateMachine.InputReader.OnAttackEvent += Attack;
+
 
     }
 
@@ -70,6 +73,7 @@ public class PlayerWerewolfState : PlayerBaseState
         _stateMachine.InputReader.OnJumpEvent -= OnJump;
         _stateMachine.InputReader.OnAttackEvent -= Attack;
         _stateMachine.Anim.SetBool("crawl", false);
+
     }
 
     public void Jump(float Force)
@@ -88,10 +92,37 @@ public class PlayerWerewolfState : PlayerBaseState
     public override void Attack()
     {
         //TODO pounce attack
+        GetClosestTarget();
+        Debug.Log(closestEnemy.name);
+        //_stateMachine.cc.transform.LookAt(closestEnemy.transform.position);
+
+        Vector3 lookDir = (closestEnemy.transform.position - _stateMachine.cc.transform.position).normalized;
+        //FaceMovementDirection(lookDir, Time.deltaTime);
+        _stateMachine.cc.transform.LookAt(closestEnemy.transform.position); //todo  this is a bug fix
         _stateMachine.Anim.SetTrigger("WerewolfAttack");
         //Debug.Log("Werewolf goes appshit");
 
 
+    }
+
+    void GetClosestTarget()
+    {
+        closestEnemy = null;
+        closestDist = float.PositiveInfinity;
+        EnemyHealth[] enemies;
+
+        enemies = GameObject.FindObjectsOfType<EnemyHealth>();
+
+        foreach (var e in enemies)
+        {
+            var testdist = Vector3.Distance(_stateMachine.cc.transform.position, e.transform.position);
+
+            if (testdist < closestDist)
+            {
+                closestDist = testdist;
+                closestEnemy = e;
+            }
+        }
     }
 
 }

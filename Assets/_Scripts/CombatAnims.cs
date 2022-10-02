@@ -44,6 +44,6 @@ public class CombatAnims : MonoBehaviour
     public void ApplyRootMotion()
     {
         Debug.Log("land");
-        //parent.transform.position += animator.deltaPosition;
+        parent.transform.position += animator.deltaPosition;
     }
 }

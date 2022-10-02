@@ -27,7 +27,7 @@ public abstract class PlayerBaseState : BaseState
     {
         if (movement == Vector3.zero) return;
 
-        _stateMachine.transform.rotation = Quaternion.Lerp(_stateMachine.transform.rotation,
+        _stateMachine.cc.transform.rotation = Quaternion.Lerp(_stateMachine.cc.transform.rotation,
                                                             Quaternion.LookRotation(movement),
                                                             deltaTime * _stateMachine.RotationDamping);
     }
