@@ -7,7 +7,8 @@ using UnityEngine;
 public abstract class PlayerBaseState : BaseState
 {
     [SerializeField] public PlayerStateMachine _stateMachine;
-
+    protected EnemyHealth closestEnemy;
+    float closestDist = float.PositiveInfinity;
 
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
@@ -45,5 +46,24 @@ public abstract class PlayerBaseState : BaseState
         return fwd * _stateMachine.InputReader.MovementValue.y +
                 right * _stateMachine.InputReader.MovementValue.x;
 
+    }
+    public void GetClosestTarget()
+    {
+        closestEnemy = null;
+        closestDist = float.PositiveInfinity;
+        EnemyHealth[] enemies;
+
+        enemies = GameObject.FindObjectsOfType<EnemyHealth>();
+
+        foreach (var e in enemies)
+        {
+            var testdist = Vector3.Distance(_stateMachine.cc.transform.position, e.transform.position);
+
+            if (testdist < closestDist)
+            {
+                closestDist = testdist;
+                closestEnemy = e;
+            }
+        }
     }
 }

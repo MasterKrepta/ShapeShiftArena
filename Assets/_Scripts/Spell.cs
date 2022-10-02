@@ -26,7 +26,7 @@ public class Spell : MonoBehaviour
     }
     private void Update()
     {
-        Vector3 moveDir = (closestEnemy.transform.position - transform.position).normalized;
+        Vector3 moveDir = (closestEnemy.transform.position - transform.position + new Vector3(0, 1, 0)).normalized;
         transform.position += moveDir * moveSpeed * Time.deltaTime;
     }
 }

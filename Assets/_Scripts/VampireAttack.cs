@@ -14,7 +14,7 @@ public class VampireAttack : MonoBehaviour
     {
         if (other.TryGetComponent<IHealth>(out IHealth health))
         {
-            Debug.Log(other.name + " takes damage");
+            //Debug.Log(other.name + " takes damage");
             health.TakeDamage(10);
             playerHealth.Heal(10);
 

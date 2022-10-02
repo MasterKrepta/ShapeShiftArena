@@ -8,10 +8,14 @@ public class Damage : MonoBehaviour
     {
         if (other.transform.parent.TryGetComponent<PlayerHealth>(out PlayerHealth health))
         {
-
             Debug.Log(other.name + " takes damage");
             health.TakeDamage(10);
-            this.gameObject.SetActive(false); // hacky fix
+
+            if (this.gameObject.activeInHierarchy)
+            {
+                this.gameObject.SetActive(false); // hacky fix
+            }
+
         }
     }
 }

@@ -25,6 +25,7 @@ public class GlobalTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _stateMachine = FindObjectOfType<PlayerStateMachine>();
         currentState = 0;
         SetNextTime();
     }

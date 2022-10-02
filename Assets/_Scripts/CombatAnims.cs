@@ -43,8 +43,8 @@ public class CombatAnims : MonoBehaviour
     }
     public void ApplyRootMotion()
     {
-        Debug.Log("land");
-        parent.transform.position += animator.deltaPosition;
+        //Debug.Log("land");
+        //parent.transform.position += animator.deltaPosition;
     }
 
     public void EnableEnemyAttack()

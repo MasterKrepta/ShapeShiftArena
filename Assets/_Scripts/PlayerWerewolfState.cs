@@ -10,8 +10,6 @@ public class PlayerWerewolfState : PlayerBaseState
 
     Vector3 velocity;
 
-    EnemyHealth closestEnemy;
-    float closestDist = float.PositiveInfinity;
 
     public PlayerWerewolfState(PlayerStateMachine playerStateMachine) : base(playerStateMachine)
     {
@@ -93,7 +91,7 @@ public class PlayerWerewolfState : PlayerBaseState
     {
         //TODO pounce attack
         GetClosestTarget();
-        Debug.Log(closestEnemy.name);
+
         //_stateMachine.cc.transform.LookAt(closestEnemy.transform.position);
 
         Vector3 lookDir = (closestEnemy.transform.position - _stateMachine.cc.transform.position).normalized;
@@ -105,24 +103,5 @@ public class PlayerWerewolfState : PlayerBaseState
 
     }
 
-    void GetClosestTarget()
-    {
-        closestEnemy = null;
-        closestDist = float.PositiveInfinity;
-        EnemyHealth[] enemies;
-
-        enemies = GameObject.FindObjectsOfType<EnemyHealth>();
-
-        foreach (var e in enemies)
-        {
-            var testdist = Vector3.Distance(_stateMachine.cc.transform.position, e.transform.position);
-
-            if (testdist < closestDist)
-            {
-                closestDist = testdist;
-                closestEnemy = e;
-            }
-        }
-    }
 
 }
