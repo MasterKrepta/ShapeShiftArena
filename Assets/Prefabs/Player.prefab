@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6d8a0a94dbfb14894026d6ff43f493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spell: {fileID: 0}
+  spell: {fileID: 8614019393634550854, guid: e94f5896f59dc934984180307dcade61, type: 3}
 --- !u!1 &261450903728342828
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,12 +416,11 @@ MonoBehaviour:
   InputReader: {fileID: 261450903728342827}
   MainCameraTransform: {fileID: 0}
   renderer: {fileID: 8842731758476116119}
-  Anim: {fileID: 0}
+  Anim: {fileID: 5965661606897213937}
   WerewolfMoveSpeed: 5
   VampireMoveSpeed: 3
   WizardMoveSpeed: 1.5
   RotationDamping: 30
-  testTarget: {fileID: 0}
 --- !u!114 &261450903728342871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +531,11 @@ MonoBehaviour:
   werewolfAttack: {fileID: 261450902947809756}
   VampireAttack: {fileID: 261450902879681283}
   WizardAttack: {fileID: 261450903551340563}
+--- !u!95 &5965661606897213937 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 4d1ef518290efeb4c89e3f4a3a1fb391, type: 3}
+  m_PrefabInstance: {fileID: 261450903856077920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &8842731758476116119 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8725563305986563319, guid: 4d1ef518290efeb4c89e3f4a3a1fb391, type: 3}
